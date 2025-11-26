@@ -3,7 +3,13 @@ InfoPangan Jakarta API Client
 ==============================
 Modular Python library untuk mengakses data harga pangan Jakarta.
 
-Usage:
+Features:
+    - Current prices: Get real-time commodity prices from markets
+    - Statistics: Get monthly historical data with daily time series
+    - DataFrame export: Convert data to pandas DataFrame for analysis
+    - Multiple markets: Fetch data from multiple markets in one call
+
+Usage - Current Prices:
     from infopangan import InfoPangan
 
     # Initialize client
@@ -12,20 +18,28 @@ Usage:
     # Get all markets
     markets = client.get_markets()
 
-    # Get market by ID
-    market = client.get_market(market_id=3)
-
-    # Get commodity prices
+    # Get current commodity prices
     prices = client.get_prices(market_id=3)
 
-    # Get prices for date range
-    data = client.get_prices_range(
-        market_ids=[3, 10, 21],
-        days=7
-    )
+    # Convert to DataFrame
+    df = client.to_dataframe([3, 10, 21])
+
+Usage - Statistics (Monthly Historical Data):
+    from infopangan import InfoPangan
+
+    client = InfoPangan()
+
+    # Get monthly statistics for a market
+    stats = client.get_statistics_by_market(3, "2025-11")
+
+    # Get daily time series as DataFrame
+    df = client.statistics_to_dataframe("market", 3, "2025-11", include_daily=True)
+
+    # Get multiple months
+    stats_range = client.get_statistics_range("market", 3, "2025-09", months=3)
 
 Author: InfoPangan Scraper
-Version: 1.0.0
+Version: 2.0.0
 """
 
 import requests
@@ -311,6 +325,265 @@ class InfoPangan:
 
         return pd.DataFrame(records)
 
+    def get_statistics(
+        self,
+        filter_by: str,
+        entity_id: int,
+        year_month: str
+    ) -> Dict:
+        """
+        Ambil data statistik bulanan untuk pasar, kota, atau komoditas
+
+        Args:
+            filter_by (str): Filter mode - "market", "city", atau "commodity"
+            entity_id (int): ID entitas (market_id, city_id, atau commodity_id)
+            year_month (str): Periode dalam format YYYY-MM (contoh: "2025-11")
+
+        Returns:
+            Dict: Data statistik dengan time series harian
+
+        Example:
+            >>> client = InfoPangan()
+            >>> # Get statistics untuk Pasar Senen di November 2025
+            >>> stats = client.get_statistics("market", 3, "2025-11")
+            >>> print(f"Total commodities: {len(stats['data'])}")
+
+            >>> # Get statistics untuk kota
+            >>> stats = client.get_statistics("city", 31, "2025-11")
+
+            >>> # Get statistics untuk komoditas tertentu
+            >>> stats = client.get_statistics("commodity", 1, "2025-11")
+        """
+        if filter_by not in ["market", "city", "commodity"]:
+            print(f"Invalid filter_by: {filter_by}. Must be 'market', 'city', or 'commodity'")
+            return {}
+
+        url = f"{self.BASE_URL}/v1/public/report"
+        params = {
+            'filterBy': filter_by,
+            'Id': entity_id,
+            'yearMonth': year_month
+        }
+
+        try:
+            response = self.session.get(url, params=params, timeout=self.timeout)
+            response.raise_for_status()
+            data = response.json()
+
+            if data.get('status') == 200:
+                return data.get('data', {})
+            else:
+                print(f"API returned status: {data.get('status')}")
+                return {}
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching statistics: {e}")
+            return {}
+
+    def get_statistics_by_market(
+        self,
+        market_id: int,
+        year_month: str
+    ) -> Dict:
+        """
+        Ambil statistik bulanan untuk pasar tertentu
+
+        Args:
+            market_id (int): ID pasar
+            year_month (str): Periode YYYY-MM
+
+        Returns:
+            Dict: Data statistik pasar
+
+        Example:
+            >>> client = InfoPangan()
+            >>> stats = client.get_statistics_by_market(3, "2025-11")
+        """
+        return self.get_statistics("market", market_id, year_month)
+
+    def get_statistics_by_city(
+        self,
+        city_id: int,
+        year_month: str
+    ) -> Dict:
+        """
+        Ambil statistik bulanan untuk kota tertentu
+
+        Args:
+            city_id (int): ID kota
+            year_month (str): Periode YYYY-MM
+
+        Returns:
+            Dict: Data statistik kota
+
+        Example:
+            >>> client = InfoPangan()
+            >>> stats = client.get_statistics_by_city(31, "2025-11")
+        """
+        return self.get_statistics("city", city_id, year_month)
+
+    def get_statistics_by_commodity(
+        self,
+        commodity_id: int,
+        year_month: str
+    ) -> Dict:
+        """
+        Ambil statistik bulanan untuk komoditas tertentu
+
+        Args:
+            commodity_id (int): ID komoditas
+            year_month (str): Periode YYYY-MM
+
+        Returns:
+            Dict: Data statistik komoditas
+
+        Example:
+            >>> client = InfoPangan()
+            >>> stats = client.get_statistics_by_commodity(1, "2025-11")
+        """
+        return self.get_statistics("commodity", commodity_id, year_month)
+
+    def get_statistics_range(
+        self,
+        filter_by: str,
+        entity_id: int,
+        start_month: str,
+        end_month: Optional[str] = None,
+        months: Optional[int] = None,
+        delay: float = 1.0
+    ) -> List[Dict]:
+        """
+        Ambil statistik untuk rentang beberapa bulan
+
+        Args:
+            filter_by (str): Filter mode - "market", "city", atau "commodity"
+            entity_id (int): ID entitas
+            start_month (str): Bulan awal YYYY-MM
+            end_month (str, optional): Bulan akhir YYYY-MM
+            months (int, optional): Jumlah bulan dari start_month (alternatif end_month)
+            delay (float): Delay antar request dalam detik
+
+        Returns:
+            List[Dict]: List data statistik per bulan
+
+        Example:
+            >>> client = InfoPangan()
+            >>> # Get 3 bulan terakhir
+            >>> stats = client.get_statistics_range("market", 3, "2025-09", months=3)
+
+            >>> # Get range spesifik
+            >>> stats = client.get_statistics_range("market", 3, "2025-01", "2025-11")
+        """
+        # Parse start month
+        start_date = datetime.strptime(start_month, "%Y-%m")
+
+        # Determine end date
+        if end_month:
+            end_date = datetime.strptime(end_month, "%Y-%m")
+        elif months:
+            end_date = start_date + timedelta(days=30 * (months - 1))
+        else:
+            end_date = start_date
+
+        # Generate month list
+        current = start_date
+        month_list = []
+        while current <= end_date:
+            month_list.append(current.strftime("%Y-%m"))
+            # Move to next month
+            if current.month == 12:
+                current = current.replace(year=current.year + 1, month=1)
+            else:
+                current = current.replace(month=current.month + 1)
+
+        # Fetch data for each month
+        results = []
+        for idx, month in enumerate(month_list):
+            data = self.get_statistics(filter_by, entity_id, month)
+            if data:
+                results.append({
+                    'year_month': month,
+                    'filter_by': filter_by,
+                    'entity_id': entity_id,
+                    'data': data
+                })
+
+            # Rate limiting
+            if idx < len(month_list) - 1:
+                time.sleep(delay)
+
+        return results
+
+    def statistics_to_dataframe(
+        self,
+        filter_by: str,
+        entity_id: int,
+        year_month: str,
+        include_daily: bool = False
+    ) -> pd.DataFrame:
+        """
+        Convert data statistik ke pandas DataFrame
+
+        Args:
+            filter_by (str): Filter mode - "market", "city", atau "commodity"
+            entity_id (int): ID entitas
+            year_month (str): Periode YYYY-MM
+            include_daily (bool): Include data harian dari recaps (default: False)
+
+        Returns:
+            pd.DataFrame: Data statistik dalam format tabel
+
+        Example:
+            >>> client = InfoPangan()
+            >>> # Summary statistik (avg, max, min)
+            >>> df = client.statistics_to_dataframe("market", 3, "2025-11")
+
+            >>> # Include daily time series
+            >>> df_daily = client.statistics_to_dataframe("market", 3, "2025-11", include_daily=True)
+            >>> df_daily.to_csv('daily_prices.csv', index=False)
+        """
+        stats = self.get_statistics(filter_by, entity_id, year_month)
+
+        if not stats or 'data' not in stats:
+            return pd.DataFrame()
+
+        records = []
+        commodities = stats.get('data', [])
+
+        for commodity in commodities:
+            if include_daily:
+                # Expand daily recaps
+                recaps = commodity.get('recaps', [])
+                for recap in recaps:
+                    record = {
+                        'filter_by': filter_by,
+                        'entity_id': entity_id,
+                        'year_month': year_month,
+                        'date': recap.get('time'),
+                        'commodity_id': commodity.get('commodity_id'),
+                        'commodity_name': commodity.get('commodity_name'),
+                        'price': recap.get('value'),
+                        'avg_monthly': commodity.get('avg_value'),
+                        'max_monthly': commodity.get('max_value'),
+                        'min_monthly': commodity.get('min_value')
+                    }
+                    records.append(record)
+            else:
+                # Summary only
+                record = {
+                    'filter_by': filter_by,
+                    'entity_id': entity_id,
+                    'year_month': year_month,
+                    'commodity_id': commodity.get('commodity_id'),
+                    'commodity_name': commodity.get('commodity_name'),
+                    'avg_value': commodity.get('avg_value'),
+                    'max_value': commodity.get('max_value'),
+                    'min_value': commodity.get('min_value'),
+                    'data_points': len(commodity.get('recaps', []))
+                }
+                records.append(record)
+
+        return pd.DataFrame(records)
+
 
 # Convenience functions untuk quick access
 def get_all_markets() -> List[Dict]:
@@ -329,6 +602,30 @@ def search_market(keyword: str) -> List[Dict]:
     """Quick function to search markets"""
     client = InfoPangan()
     return client.get_markets(search=keyword)
+
+
+def get_statistics(filter_by: str, entity_id: int, year_month: str) -> Dict:
+    """Quick function to get statistics"""
+    client = InfoPangan()
+    return client.get_statistics(filter_by, entity_id, year_month)
+
+
+def get_market_statistics(market_id: int, year_month: str) -> Dict:
+    """Quick function to get market statistics"""
+    client = InfoPangan()
+    return client.get_statistics_by_market(market_id, year_month)
+
+
+def get_city_statistics(city_id: int, year_month: str) -> Dict:
+    """Quick function to get city statistics"""
+    client = InfoPangan()
+    return client.get_statistics_by_city(city_id, year_month)
+
+
+def get_commodity_statistics(commodity_id: int, year_month: str) -> Dict:
+    """Quick function to get commodity statistics"""
+    client = InfoPangan()
+    return client.get_statistics_by_commodity(commodity_id, year_month)
 
 
 # Example usage
@@ -382,6 +679,33 @@ if __name__ == "__main__":
     output_file = f"prices_{datetime.now().strftime('%Y%m%d')}.csv"
     df.to_csv(output_file, index=False, encoding='utf-8-sig')
     print(f"\nData saved to: {output_file}")
+
+    # Example 5: Get statistics (monthly time series)
+    print("\n[5] Getting statistics for Pasar Senen (November 2025)...")
+    stats = client.get_statistics_by_market(3, "2025-11")
+    if stats and 'data' in stats:
+        print(f"Total commodities: {len(stats['data'])}")
+
+        # Show sample commodity with daily data
+        if stats['data']:
+            sample = stats['data'][0]
+            print(f"\nSample commodity: {sample.get('commodity_name')}")
+            print(f"  Average: Rp {sample.get('avg_value'):,}")
+            print(f"  Max: Rp {sample.get('max_value'):,}")
+            print(f"  Min: Rp {sample.get('min_value'):,}")
+            print(f"  Daily data points: {len(sample.get('recaps', []))}")
+
+    # Example 6: Convert statistics to DataFrame
+    print("\n[6] Converting statistics to DataFrame (with daily data)...")
+    df_stats = client.statistics_to_dataframe("market", 3, "2025-11", include_daily=True)
+    if not df_stats.empty:
+        print(f"DataFrame shape: {df_stats.shape}")
+        print(f"Date range: {df_stats['date'].min()} to {df_stats['date'].max()}")
+
+        # Save to CSV
+        stats_file = f"statistics_daily_{datetime.now().strftime('%Y%m%d')}.csv"
+        df_stats.to_csv(stats_file, index=False, encoding='utf-8-sig')
+        print(f"Statistics data saved to: {stats_file}")
 
     print("\n" + "="*70)
     print("Done!")
