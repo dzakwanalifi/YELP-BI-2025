@@ -1,35 +1,16 @@
-# InfoPangan Scraper - Git Ignore
+# Markdown files
+*.md
 
-# Data output files
-*.json
+# Large CSV files
 *.csv
-!bps-jakarta-data/*.csv
-data_pasar_*
-harga_pangan_*
 
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual Environment
+# Virtual environment
 venv/
 env/
 ENV/
@@ -46,12 +27,31 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Logs
+# Log files
 *.log
+log.txt
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# JSON cache files
+*_cache.json
+markets_cache.json
 
-# Environment variables
-.env
-.env.local
+# PNG/Image outputs (if large)
+*.png
+
+# Output directories
+paper_analysis_output/
+final_paper_assets/
+supply_chain_spatial/
+supply_chain_spatial_fast/
+
+# Data directories
+pihps_data/
+cleaned_pihps_data/
+bps-jakarta-data/
+satu-data-jakarta/
+data_samples/
+GeoJSON/
+
+# Specific large files
+infopangan_historical_*.csv
+weather_pihps_historical.csv

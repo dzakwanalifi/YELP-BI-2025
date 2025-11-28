@@ -1,0 +1,51 @@
+﻿================================================================================
+SANITY CHECK & VALIDATION REPORT
+================================================================================
+
+================================================================================
+1. VALIDASI MGWR: Apakah Tanda Koefisien Masuk Akal?
+================================================================================
+
+Hasil MGWR (Top 5 Lokasi):
+  location  coef_nearest_production_km  coef_nearest_distribution_km        R2
+0  Bandung                   -0.340006                      0.214571  0.396371
+1   Bekasi                   -0.407409                      0.327023  0.287933
+2    Bogor                   -0.398691                      0.398503  0.311908
+3  Cirebon                   -0.374768                      0.072440  0.465423
+4    Depok                   -0.415076                      0.384075  0.291895
+
+--- INTERPRETASI TANDA KOEFISIEN ---
+
+Koefisien Jarak Produksi (coef_nearest_production_km):
+  Bandung: -0.340 (NEGATIF) -> Semakin JAUH dari produksi, harga TURUN
+python : Traceback (most recent call 
+last):
+At line:1 char:1
++ python sanity_check_validation.py 
+2>&1 | Out-File -FilePath sanity_ch ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecif 
+   ied: (Traceback (most recent call l  
+  ast)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCom 
+   mandError
+ 
+  File "D:\Arsip Kompetisi\YELP BI 
+2025\sanity_check_validation.py", line 
+34, in <module>
+    print(f"     \u26a0\ufe0f  PERLU 
+DICEK: Ini counter-intuitive secara 
+ekonomi!")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\Pyt
+honSoftwareFoundation.Python.3.13_3.13.2
+544.0_x64__qbz5n2kfra8p0\Lib\encodings\c
+p1252.py", line 19, in encode
+    return codecs.charmap_encode(input,s
+elf.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec 
+can't encode characters in position 
+5-6: character maps to <undefined>
