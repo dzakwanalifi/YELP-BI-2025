@@ -135,16 +135,23 @@ class InfoPangan:
 
         Args:
             market_id (int): ID pasar (0 untuk semua pasar, default: 0)
-            date (str, optional): Tanggal dalam format YYYY-MM-DD (API selalu return data hari ini)
+            date (str, optional): Tanggal dalam format YYYY-MM-DD
+                                 Data tersedia mulai 2024-01-01
+                                 Jika tidak diisi, akan return data hari ini
 
         Returns:
             Dict: Data harga komoditas dengan metadata
 
         Example:
             >>> client = InfoPangan()
+            >>> # Get current prices
             >>> prices = client.get_prices(market_id=3)
             >>> print(f"Tanggal: {prices['selected_price_date']}")
             >>> print(f"Jumlah komoditas: {len(prices['data'])}")
+
+            >>> # Get historical prices (available from 2024-01-01)
+            >>> prices_aug = client.get_prices(market_id=3, date="2024-08-15")
+            >>> print(f"Date: {prices_aug['selected_price_date']}")
 
             >>> # Get specific commodity
             >>> for commodity in prices['data']:
@@ -152,9 +159,10 @@ class InfoPangan:
             ...         print(f"{commodity['name']}: Rp {commodity['newest_price']:,}")
         """
         url = f"{self.BASE_URL}/v2/public/master-data/commodity/markets/{market_id}"
+        params = {'date': date} if date else {}
 
         try:
-            response = self.session.get(url, timeout=self.timeout)
+            response = self.session.get(url, params=params, timeout=self.timeout)
             response.raise_for_status()
             data = response.json()
 
@@ -204,60 +212,83 @@ class InfoPangan:
     def get_prices_range(
         self,
         market_ids: List[int],
-        days: int = 7,
+        start_date: str,
+        end_date: Optional[str] = None,
+        days: Optional[int] = None,
         delay: float = 1.0
     ) -> pd.DataFrame:
         """
-        Simulasi data harga untuk beberapa hari (karena API hanya return data hari ini)
+        Ambil data harga historis untuk rentang tanggal
 
         Args:
             market_ids (List[int]): Daftar ID pasar
-            days (int): Jumlah hari (default: 7)
+            start_date (str): Tanggal mulai YYYY-MM-DD (minimum: 2024-01-01)
+            end_date (str, optional): Tanggal akhir YYYY-MM-DD
+            days (int, optional): Jumlah hari dari start_date (alternatif end_date)
             delay (float): Delay antar request (default: 1.0)
 
         Returns:
             pd.DataFrame: DataFrame dengan data harga multiple hari
 
         Note:
-            API InfoPangan hanya menyediakan data hari ini.
-            Untuk data historis, jalankan script ini secara terjadwal.
+            Data historis tersedia mulai 2024-01-01
 
         Example:
             >>> client = InfoPangan()
-            >>> df = client.get_prices_range([3, 10, 21], days=7)
-            >>> print(df.head())
+            >>> # Get range spesifik
+            >>> df = client.get_prices_range([3, 10], "2024-08-01", "2024-08-07")
+
+            >>> # Get 7 hari dari tanggal tertentu
+            >>> df = client.get_prices_range([3, 10], "2024-08-15", days=7)
+
             >>> df.to_csv('prices.csv', index=False)
         """
-        # Ambil data hari ini
-        today_data = self.get_prices_multiple(market_ids, delay)
+        # Parse start date
+        start = datetime.strptime(start_date, "%Y-%m-%d")
 
-        if not today_data:
-            return pd.DataFrame()
+        # Determine end date
+        if end_date:
+            end = datetime.strptime(end_date, "%Y-%m-%d")
+        elif days:
+            end = start + timedelta(days=days - 1)
+        else:
+            end = start
+
+        # Generate date list
+        current = start
+        date_list = []
+        while current <= end:
+            date_list.append(current.strftime("%Y-%m-%d"))
+            current += timedelta(days=1)
 
         records = []
 
-        # Generate data untuk setiap hari (hari ini saja karena API limitation)
-        for day_offset in range(days):
-            date = datetime.now() - timedelta(days=(days - 1 - day_offset))
-            date_str = date.strftime("%Y-%m-%d")
+        # Fetch data for each date and market
+        for idx, date_str in enumerate(date_list):
+            for market_id in market_ids:
+                prices = self.get_prices(market_id, date=date_str)
 
-            for market_id, market_data in today_data.items():
-                commodities = market_data.get('data', [])
+                if prices and 'data' in prices:
+                    commodities = prices.get('data', [])
 
-                for commodity in commodities:
-                    price = commodity.get('newest_price') or 0
+                    for commodity in commodities:
+                        price = commodity.get('newest_price') or 0
 
-                    records.append({
-                        'date': date_str,
-                        'market_id': market_id,
-                        'commodity_id': commodity.get('commodity_id'),
-                        'commodity_name': commodity.get('name'),
-                        'unit': commodity.get('unit'),
-                        'price': price,
-                        'prev_price': commodity.get('prev_price'),
-                        'status': commodity.get('status'),
-                        'latest_update': commodity.get('latest_new_price_date')
-                    })
+                        records.append({
+                            'date': date_str,
+                            'market_id': market_id,
+                            'commodity_id': commodity.get('commodity_id'),
+                            'commodity_name': commodity.get('name'),
+                            'unit': commodity.get('unit'),
+                            'price': price,
+                            'prev_price': commodity.get('prev_price'),
+                            'status': commodity.get('status'),
+                            'latest_update': commodity.get('latest_new_price_date')
+                        })
+
+            # Rate limiting after each date (not each market)
+            if idx < len(date_list) - 1:
+                time.sleep(delay)
 
         return pd.DataFrame(records)
 

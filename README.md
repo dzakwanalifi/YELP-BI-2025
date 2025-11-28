@@ -10,6 +10,8 @@ pip install -r requirements.txt
 
 ## 🚀 Quick Start
 
+### Current Prices
+
 ```python
 from infopangan import InfoPangan
 
@@ -24,17 +26,42 @@ print(f"Total pasar: {len(markets)}")
 senen = client.get_markets(search="Senen")
 print(senen[0]['market_name'])
 
-# Get prices for a market
+# Get current prices
 prices = client.get_prices(market_id=3)
 print(f"Tanggal: {prices['selected_price_date']}")
 print(f"Komoditas: {len(prices['data'])}")
 
-# Get prices from multiple markets
-results = client.get_prices_multiple([3, 10, 21])
+# Get historical prices (available from 2024-01-01)
+prices_aug = client.get_prices(market_id=3, date="2024-08-15")
+print(f"Historical date: {prices_aug['selected_price_date']}")
+
+# Get price range for multiple days
+df = client.get_prices_range([3, 10], "2024-08-01", "2024-08-07")
+df.to_csv('prices_range.csv', index=False)
 
 # Convert to DataFrame
 df = client.to_dataframe([3, 10, 21], include_market_info=True)
 df.to_csv('prices.csv', index=False)
+```
+
+### Historical Statistics
+
+```python
+from infopangan import InfoPangan
+
+client = InfoPangan()
+
+# Get monthly statistics (available from 2024-08)
+stats = client.get_statistics_by_market(3, "2024-10")
+print(f"Commodities: {len(stats['data'])}")
+
+# Convert to DataFrame with daily time series
+df = client.statistics_to_dataframe("market", 3, "2024-10", include_daily=True)
+df.to_csv('statistics_daily.csv', index=False)
+
+# Get multiple months
+stats_range = client.get_statistics_range("market", 3, "2024-08", months=3)
+print(f"Months fetched: {len(stats_range)}")
 ```
 
 ## 📖 Dokumentasi API
@@ -302,14 +329,23 @@ results = search_market("Senen")
 ## 📝 Notes
 
 ### Current Prices (get_prices)
-- API hanya menyediakan data **hari ini**
-- Untuk data historis, jalankan script secara terjadwal (cron job)
+- ✅ **Data historis tersedia mulai 1 Januari 2024**
+- Mendukung parameter `date` untuk query historical data
+- Format date: `YYYY-MM-DD`
+- Continuous data dari 2024-01-01 hingga sekarang
 
 ### Statistics (get_statistics)
+- ✅ **Data historis tersedia mulai 14 Agustus 2024**
 - API menyediakan data **bulanan** dengan time series harian
 - Format: `year_month="YYYY-MM"` (contoh: "2025-11")
 - Response includes: avg_value, max_value, min_value, recaps (daily data)
 - 3 filter modes: "market", "city", "commodity"
+- ⚠️ Beberapa bulan memiliki gaps (Jan 2025, May 2025, Jun 2025)
+
+### Data Availability
+- **Prices**: 2024-01-01 s/d sekarang (continuous)
+- **Statistics**: 2024-08-14 s/d sekarang (with gaps)
+- Lihat [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md) untuk detail lengkap
 
 ### General
 - Default timeout: 10 detik
@@ -323,7 +359,9 @@ results = search_market("Senen")
 ├── infopangan.py           # Main module
 ├── example_usage.py        # Usage examples (current prices)
 ├── example_statistics.py   # Usage examples (statistics)
-├── API_DOCUMENTATION.md    # API docs
+├── API_DOCUMENTATION.md    # API endpoint documentation
+├── DATA_AVAILABILITY.md    # Historical data availability guide
+├── STATISTICS_GUIDE.md     # Complete statistics usage guide
 ├── requirements.txt        # Dependencies
 └── README.md              # This file
 ```

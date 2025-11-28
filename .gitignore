@@ -3,6 +3,7 @@
 # Data output files
 *.json
 *.csv
+!bps-jakarta-data/*.csv
 data_pasar_*
 harga_pangan_*
 
