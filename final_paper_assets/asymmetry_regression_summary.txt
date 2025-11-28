@@ -1,0 +1,28 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              d_Jakarta   R-squared:                       0.059
+Model:                            OLS   Adj. R-squared:                  0.051
+Method:                 Least Squares   F-statistic:                     8.028
+Date:                Fri, 28 Nov 2025   Prob (F-statistic):           0.000415
+Time:                        16:26:42   Log-Likelihood:                -2743.4
+No. Observations:                 260   AIC:                             5493.
+Df Residuals:                     257   BIC:                             5503.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------
+const                105.2335    767.801      0.137      0.891   -1406.750    1617.217
+d_Bandung_Pos_Lag1     0.2579      0.111      2.328      0.021       0.040       0.476
+d_Bandung_Neg_Lag1     0.2856      0.115      2.486      0.014       0.059       0.512
+==============================================================================
+Omnibus:                       15.448   Durbin-Watson:                   1.512
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               41.534
+Skew:                          -0.090   Prob(JB):                     9.57e-10
+Kurtosis:                       4.950   Cond. No.                     8.14e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 8.14e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

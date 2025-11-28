@@ -1,0 +1,9 @@
+FIGURE 3 ANALYSIS: PRICE DETERMINANTS
+=====================================
+Dominant Factor: Logistics Connectivity (66.0%)
+Full Breakdown:
+- Logistics Connectivity: 66.0%
+- Local Production: 20.0%
+- Climate Risk (Rainfall): 14.0%
+
+Key Insight: Prices are driven primarily by Logistics Connectivity, suggesting that policy should focus heavily on this aspect.

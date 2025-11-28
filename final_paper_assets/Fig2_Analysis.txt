@@ -1,0 +1,10 @@
+FIGURE 2 ANALYSIS: POLICY CLUSTERS
+==================================
+Cluster Breakdown:
+- Efficient/Stable: 5 cities
+- Inefficiency (High Price, High Infra): 3 cities
+- Structural Gap (High Price, Low Infra): 2 cities
+
+RED ZONE (Priority for Infrastructure/PSBI): Cirebon, Tasikmalaya
+ORANGE ZONE (Priority for Market Ops/GNPIP): Bandung, Depok, Jakarta Pusat
+Insight: Red zones lack physical supply chain nodes, causing high prices. Orange zones have infrastructure but suffer from market inefficiencies.

@@ -1,0 +1,7 @@
+FIGURE 6 ANALYSIS: TEMPORAL TRENDS
+==================================
+Price Volatility (Standard Deviation):
+- Red Zone (Low Infra): 19893.33
+- Green Zone (High Infra): 20957.21
+
+Insight: Volatility is comparable, suggesting other factors (market power) might be at play in Green Zones.

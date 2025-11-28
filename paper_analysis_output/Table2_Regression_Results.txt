@@ -1,0 +1,25 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  price   R-squared:                       0.001
+Model:                            OLS   Adj. R-squared:                 -0.142
+Method:                 Least Squares   F-statistic:                  0.007386
+Date:                Fri, 28 Nov 2025   Prob (F-statistic):              0.934
+Time:                        14:53:05   Log-Likelihood:                -66.224
+No. Observations:                   9   AIC:                             136.4
+Df Residuals:                       7   BIC:                             136.8
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===========================================================================================
+                              coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------
+const                     1.48e+04    533.497     27.748      0.000    1.35e+04    1.61e+04
+distance_to_location_km    -4.3830     50.999     -0.086      0.934    -124.978     116.212
+==============================================================================
+Omnibus:                        4.774   Durbin-Watson:                   2.019
+Prob(Omnibus):                  0.092   Jarque-Bera (JB):                1.449
+Skew:                          -0.938   Prob(JB):                        0.485
+Kurtosis:                       3.585   Cond. No.                         39.2
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

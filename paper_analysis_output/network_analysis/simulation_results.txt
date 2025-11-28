@@ -1,0 +1,12 @@
+ATTACK SIMULATION REPORT
+========================
+Scenario: Disruption of Top 5 Critical Hubs
+Impact: 0.00% of the supply chain network disconnected.
+Interpretation: High dependency on these 5 hubs indicates low redundancy.
+
+Targeted Hubs:
+- Unnamed (Bandung)
+- Unnamed (Bandung)
+- Unnamed (Bandung)
+- Unnamed (Bandung)
+- Unnamed (Bandung)

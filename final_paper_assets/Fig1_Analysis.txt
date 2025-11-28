@@ -1,0 +1,10 @@
+FIGURE 1 ANALYSIS: NETWORK TOPOLOGY
+===================================
+Total Nodes: 17344 facilities mapped.
+Total Connections: 4427 supply links established.
+Critical Insight: The network reveals 10 critical hubs (red stars) that act as primary bottlenecks.
+Top 3 Critical Hub Locations:
+- Pasar Ujungberung in Bandung (Score: 0.0000)
+- Unnamed in Bandung (Score: 0.0000)
+- Pasar Induk Cikurubuk in Kab. Tasikmalaya (Score: 0.0000)
+Implication: Disruption at these 3 points could paralyze regional distribution.

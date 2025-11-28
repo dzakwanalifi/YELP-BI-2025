@@ -1,0 +1,16 @@
+=== AUTOMATED ANALYSIS INSIGHTS ===
+
+1. SPATIAL HETEROGENEITY (MGWR):
+- Jakarta Pusat Sensitivity to Production Distance: -0.427
+- Cirebon Sensitivity to Production Distance: -0.375
+-> CONCLUSION: Jakarta is significantly more affected by physical distance/logistics friction than Cirebon.
+
+2. SHOCK PROPAGATION (VAR/IRF):
+- Peak Impact Week: Week 2
+- Peak Impact Value: -0.310
+-> CONCLUSION: There is a 2-week lag before a shock in Bandung fully hits Jakarta. This is the 'Golden Time' for intervention.
+
+3. PRICE ASYMMETRY (NARDL):
+- Transmission of Price Increase (Rocket): 0.258
+- Transmission of Price Decrease (Feather): 0.286
+-> CONCLUSION: Price decreases transmit FASTER than increases. This suggests 'Panic Selling' behavior due to lack of storage.

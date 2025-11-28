@@ -1,0 +1,19 @@
+STATISTICAL ASSUMPTION TESTS & DIAGNOSTICS
+==========================================
+
+1. NORMALITY TEST (Shapiro-Wilk) on Price Distribution
+   Statistic=0.9391, p-value=0.0000
+   Result: Data is NOT Gaussian (Reject H0) -> Suggests use of Robust Regression or Log-Transform
+
+2. STATIONARITY TEST (Augmented Dickey-Fuller) on Price Series
+   Test on Bandung Price Series:
+   ADF Statistic: -3.3095
+   p-value: 0.0145
+   Result: Series is Stationary (Reject H0)
+
+3. MULTICOLLINEARITY TEST (VIF)
+              feature       VIF
+0             rain_mm  1.022636
+1  connectivity_index  1.022636
+2           intercept  5.701931
+   Interpretation: VIF < 5 indicates no severe multicollinearity.

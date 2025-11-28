@@ -1,0 +1,2 @@
+Granger Causality (Bandung -> Jakarta Pusat)
+Lag 2 p-value: 0.6061

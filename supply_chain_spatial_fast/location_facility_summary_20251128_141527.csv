@@ -1,0 +1,91 @@
+﻿location,commodity,total_facilities,production_count,processing_count,storage_count,distribution_count,retail_count,nearest_facility_km
+Jakarta Pusat,Beras,1432,0,0,0,222,1210,0.22
+Jakarta Pusat,Bawang Merah,247,0,0,0,222,25,0.28
+Jakarta Pusat,Bawang Putih,247,0,0,0,222,25,0.28
+Jakarta Pusat,Cabai,248,1,0,0,222,25,0.28
+Jakarta Pusat,Daging Ayam,224,0,0,0,220,4,0.28
+Jakarta Pusat,Daging Sapi,224,0,0,0,220,4,0.28
+Jakarta Pusat,Telur Ayam,1432,0,0,0,222,1210,0.22
+Jakarta Pusat,Minyak Goreng,1432,0,0,0,222,1210,0.22
+Jakarta Pusat,Gula Pasir,1432,0,0,0,222,1210,0.22
+Sukabumi,Beras,79,1,0,0,3,75,0.3
+Sukabumi,Bawang Merah,5,0,0,0,3,2,0.86
+Sukabumi,Bawang Putih,5,0,0,0,3,2,0.86
+Sukabumi,Cabai,5,0,0,0,3,2,0.86
+Sukabumi,Daging Ayam,3,0,0,0,3,0,1.55
+Sukabumi,Daging Sapi,3,0,0,0,3,0,1.55
+Sukabumi,Telur Ayam,78,0,0,0,3,75,0.3
+Sukabumi,Minyak Goreng,78,0,0,0,3,75,0.3
+Sukabumi,Gula Pasir,78,0,0,0,3,75,0.3
+Tasikmalaya,Beras,41,39,0,0,0,2,12.65
+Tasikmalaya,Bawang Merah,0,0,0,0,0,0,
+Tasikmalaya,Bawang Putih,0,0,0,0,0,0,
+Tasikmalaya,Cabai,0,0,0,0,0,0,
+Tasikmalaya,Daging Ayam,0,0,0,0,0,0,
+Tasikmalaya,Daging Sapi,0,0,0,0,0,0,
+Tasikmalaya,Telur Ayam,2,0,0,0,0,2,13.43
+Tasikmalaya,Minyak Goreng,2,0,0,0,0,2,13.43
+Tasikmalaya,Gula Pasir,2,0,0,0,0,2,13.43
+Kab. Tasikmalaya,Beras,28,22,0,0,2,4,1.31
+Kab. Tasikmalaya,Bawang Merah,2,0,0,0,2,0,1.31
+Kab. Tasikmalaya,Bawang Putih,2,0,0,0,2,0,1.31
+Kab. Tasikmalaya,Cabai,2,0,0,0,2,0,1.31
+Kab. Tasikmalaya,Daging Ayam,2,0,0,0,2,0,1.31
+Kab. Tasikmalaya,Daging Sapi,2,0,0,0,2,0,1.31
+Kab. Tasikmalaya,Telur Ayam,6,0,0,0,2,4,1.31
+Kab. Tasikmalaya,Minyak Goreng,6,0,0,0,2,4,1.31
+Kab. Tasikmalaya,Gula Pasir,6,0,0,0,2,4,1.31
+Kab. Cirebon,Beras,24,10,0,0,3,11,2.54
+Kab. Cirebon,Bawang Merah,3,0,0,0,3,0,4.63
+Kab. Cirebon,Bawang Putih,3,0,0,0,3,0,4.63
+Kab. Cirebon,Cabai,3,0,0,0,3,0,4.63
+Kab. Cirebon,Daging Ayam,3,0,0,0,3,0,4.63
+Kab. Cirebon,Daging Sapi,3,0,0,0,3,0,4.63
+Kab. Cirebon,Telur Ayam,14,0,0,0,3,11,2.75
+Kab. Cirebon,Minyak Goreng,14,0,0,0,3,11,2.75
+Kab. Cirebon,Gula Pasir,14,0,0,0,3,11,2.75
+Cirebon,Beras,135,15,0,0,19,101,0.15
+Cirebon,Bawang Merah,26,0,0,0,19,7,0.69
+Cirebon,Bawang Putih,26,0,0,0,19,7,0.69
+Cirebon,Cabai,26,0,0,0,19,7,0.69
+Cirebon,Daging Ayam,20,0,0,0,18,2,0.88
+Cirebon,Daging Sapi,20,0,0,0,18,2,0.88
+Cirebon,Telur Ayam,120,0,0,0,19,101,0.15
+Cirebon,Minyak Goreng,120,0,0,0,19,101,0.15
+Cirebon,Gula Pasir,120,0,0,0,19,101,0.15
+Depok,Beras,647,26,0,0,50,571,0.91
+Depok,Bawang Merah,66,0,0,0,50,16,2.45
+Depok,Bawang Putih,66,0,0,0,50,16,2.45
+Depok,Cabai,69,3,0,0,50,16,2.45
+Depok,Daging Ayam,54,0,2,0,47,5,2.45
+Depok,Daging Sapi,54,0,2,0,47,5,2.45
+Depok,Telur Ayam,621,0,0,0,50,571,0.91
+Depok,Minyak Goreng,621,0,0,0,50,571,0.91
+Depok,Gula Pasir,621,0,0,0,50,571,0.91
+Bekasi,Beras,302,7,0,0,41,254,0.73
+Bekasi,Bawang Merah,55,0,0,0,41,14,2.66
+Bekasi,Bawang Putih,55,0,0,0,41,14,2.66
+Bekasi,Cabai,55,0,0,0,41,14,2.66
+Bekasi,Daging Ayam,43,0,0,0,40,3,2.66
+Bekasi,Daging Sapi,43,0,0,0,40,3,2.66
+Bekasi,Telur Ayam,295,0,0,0,41,254,0.73
+Bekasi,Minyak Goreng,295,0,0,0,41,254,0.73
+Bekasi,Gula Pasir,295,0,0,0,41,254,0.73
+Bogor,Beras,291,6,0,0,41,244,0.14
+Bogor,Bawang Merah,53,0,0,0,41,12,0.19
+Bogor,Bawang Putih,53,0,0,0,41,12,0.19
+Bogor,Cabai,75,22,0,0,41,12,0.19
+Bogor,Daging Ayam,40,0,0,0,40,0,0.19
+Bogor,Daging Sapi,40,0,0,0,40,0,0.19
+Bogor,Telur Ayam,285,0,0,0,41,244,0.14
+Bogor,Minyak Goreng,285,0,0,0,41,244,0.14
+Bogor,Gula Pasir,285,0,0,0,41,244,0.14
+Bandung,Beras,771,15,0,0,68,688,0.09
+Bandung,Bawang Merah,73,0,0,0,68,5,1.06
+Bandung,Bawang Putih,73,0,0,0,68,5,1.06
+Bandung,Cabai,320,247,0,0,68,5,1.06
+Bandung,Daging Ayam,63,0,0,0,62,1,1.06
+Bandung,Daging Sapi,63,0,0,0,62,1,1.06
+Bandung,Telur Ayam,756,0,0,0,68,688,0.09
+Bandung,Minyak Goreng,756,0,0,0,68,688,0.09
+Bandung,Gula Pasir,756,0,0,0,68,688,0.09

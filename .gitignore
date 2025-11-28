@@ -1,8 +1,8 @@
 # Markdown files
 *.md
 
-# Large CSV files
-*.csv
+# Large CSV files (specific files only, allow CSV in output folders)
+# *.csv  # Commented to allow CSV in output folders
 
 # Python cache
 __pycache__/
@@ -36,13 +36,13 @@ log.txt
 markets_cache.json
 
 # PNG/Image outputs (if large)
-*.png
+# *.png  # Temporarily allow PNG for analysis results
 
-# Output directories
-paper_analysis_output/
-final_paper_assets/
-supply_chain_spatial/
-supply_chain_spatial_fast/
+# Output directories (temporarily allow for sharing results)
+# paper_analysis_output/
+# final_paper_assets/
+# supply_chain_spatial/
+# supply_chain_spatial_fast/
 
 # Data directories
 pihps_data/
@@ -55,3 +55,10 @@ GeoJSON/
 # Specific large files
 infopangan_historical_*.csv
 weather_pihps_historical.csv
+infopangan_complete_data_*.csv
+
+# Large CSV in data directories
+cleaned_pihps_data/*.csv
+bps-jakarta-data/*.csv
+satu-data-jakarta/*.xlsx
+pihps_data/*.csv

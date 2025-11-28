@@ -1,0 +1,33 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  price   R-squared:                       0.064
+Model:                            OLS   Adj. R-squared:                  0.060
+Method:                 Least Squares   F-statistic:                     16.48
+Date:                Fri, 28 Nov 2025   Prob (F-statistic):           2.28e-10
+Time:                        15:57:33   Log-Likelihood:                -8284.1
+No. Observations:                 732   AIC:                         1.658e+04
+Df Residuals:                     728   BIC:                         1.659e+04
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------
+const               5.384e+04   2093.434     25.717      0.000    4.97e+04    5.79e+04
+rain_mm               17.7686      7.954      2.234      0.026       2.152      33.385
+connectivity_index    -0.6871      0.873     -0.787      0.432      -2.401       1.027
+interaction            0.0115      0.004      3.000      0.003       0.004       0.019
+==============================================================================
+Omnibus:                       62.234   Durbin-Watson:                   1.061
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               76.305
+Skew:                           0.781   Prob(JB):                     2.69e-17
+Kurtosis:                       3.252   Cond. No.                     1.59e+06
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.59e+06. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+INTERPRETATION OF INTERACTION TERM:
+   Coefficient is POSITIVE (0.0115).
+   CONCLUSION: Connectivity does not appear to buffer rainfall shocks in this linear model.
