@@ -1,0 +1,12 @@
+
+GAMBAR 4.14: MATRIKS PRIORITAS KEBIJAKAN
+----------------------------------------
+1. Kuadran Kanan-Atas (High Vulnerability, High Spillover):
+   - Prioritas Utama Intervensi Struktural.
+   - Target: Cirebon, Depok.
+   - Aksi: Pembangunan Hub Logistik & Cold Storage.
+2. Kuadran Kiri-Atas (High Vulnerability, Low Spillover):
+   - Prioritas Intervensi Lokal.
+   - Aksi: Operasi Pasar Murah.
+3. Kuadran Bawah (Low Vulnerability):
+   - Monitoring Rutin.

@@ -1,0 +1,4 @@
+Variable,Coefficient,Significance
+W_temperature,67.71,Significant (p<0.05)
+W_precipitation,-0.05,Not Significant
+W_bbm_lag1,0.02,Not Significant

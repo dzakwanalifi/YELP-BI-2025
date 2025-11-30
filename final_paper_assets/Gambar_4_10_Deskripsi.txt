@@ -1,0 +1,6 @@
+
+GAMBAR 4.10: VALIDASI OUT-OF-SAMPLE
+-----------------------------------
+1. Periode Test: 12 Bulan terakhir (2024-2025).
+2. Akurasi: MAPE (Mean Absolute Percentage Error) sebesar 1.25%.
+3. Visualisasi: Garis prediksi (Merah) sangat berimpit dengan garis aktual (Biru), menunjukkan model mampu menangkap tren dan fluktuasi dengan sangat baik.

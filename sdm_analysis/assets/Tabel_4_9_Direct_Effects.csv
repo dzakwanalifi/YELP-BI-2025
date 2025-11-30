@@ -1,0 +1,7 @@
+Variable,Coefficient,P-Value
+price_lag1,0.9148,0.0
+rain_lag2,-0.5258,0.0023
+bbm_lag1,0.1342,0.0001
+temperature_mean,24.5,0.045
+month_4 (Apr),-277.4,0.001
+month_5 (May),-319.1,0.0

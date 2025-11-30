@@ -1,0 +1,5 @@
+Variable,Indirect_Effect,Std_Error,CI_Lower,CI_Upper,P_Value,Spillover_Ratio
+rain_lag2,-0.12,0.133,-0.38,0.14,0.368,-0.22
+bbm_lag1,0.05,0.036,-0.02,0.12,0.165,0.35
+temperature_mean,71.4,26.8,18.9,123.9,0.008,2.71
+luas_panen,-0.0156,0.0089,-0.033,0.0018,0.079,1.75

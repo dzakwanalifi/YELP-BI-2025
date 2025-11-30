@@ -1,0 +1,4 @@
+Lag,Coefficient,Std_Error,T_Statistic,P_Value,Significance
+rain_lag1 (30 days),-0.21,0.158,-1.33,0.184,Not significant
+rain_lag2 (60 days),-0.526,0.175,-3.0,0.002,Highly significant
+rain_lag3 (90 days),-0.34,0.192,-1.77,0.078,Marginally significant

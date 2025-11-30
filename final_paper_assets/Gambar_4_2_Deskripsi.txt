@@ -1,0 +1,7 @@
+
+GAMBAR 4.2: DISTRIBUSI HARGA PER WILAYAH (BOXPLOT)
+--------------------------------------------------
+1. Wilayah Termahal (Mean): DKI Jakarta (Rp 13361/kg)
+2. Wilayah Termurah (Mean): Depok (Rp 11410/kg)
+3. Wilayah Paling Volatil (Std Dev): Tasikmalaya (Std: 1916)
+4. Disparitas: Selisih harga rata-rata antara wilayah termahal dan termurah adalah Rp 1951/kg.

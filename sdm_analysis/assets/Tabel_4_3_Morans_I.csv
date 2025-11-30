@@ -1,0 +1,2 @@
+Test,Statistic,Expected,Variance,Z-Score,P-Value,Interpretation
+Global Moran's I,0.342,-0.091,0.0156,3.47,0.0005,Significant positive spatial autocorrelation

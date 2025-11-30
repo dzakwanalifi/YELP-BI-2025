@@ -1,0 +1,6 @@
+
+GAMBAR 4.7: IMPULSE RESPONSE FUNCTION (IRF)
+-------------------------------------------
+1. Persistensi: Koefisien Autoregresif (AR) sebesar 0.915.
+2. Half-Life: Guncangan harga membutuhkan waktu sekitar 7.8 bulan untuk mereda menjadi separuhnya.
+3. Interpretasi: Harga beras sangat "sticky" (kaku). Kenaikan harga hari ini akan berdampak lama hingga 7-8 bulan ke depan.

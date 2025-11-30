@@ -1,0 +1,18 @@
+EARLY WARNING SYSTEM - TEMPORAL LAG INTERPRETATION
+============================================================
+
+Rainfall Lag Effects:
+        Variable  Coefficient  Std_Error    Z_stat  P_value Sig
+precipitation_mm    -0.289641   0.179203 68.200449      0.0 ***
+ Variable  Coefficient  Std_Error  Z_stat  P_value Sig
+rain_lag1     0.089309   0.181043     0.0      1.0    
+ Variable  Coefficient  Std_Error   Z_stat  P_value Sig
+rain_lag2    -0.525807   0.172502 -1.61627 0.106036    
+ Variable  Coefficient  Std_Error   Z_stat  P_value Sig
+rain_lag3     -0.13012   0.151817 0.106036 0.915554    
+
+BBM Lag Effects:
+     Variable  Coefficient  Std_Error    Z_stat  P_value Sig
+bbm_price_idr     -0.03689   0.029417 -3.048126 0.002303  **
+Variable  Coefficient  Std_Error   Z_stat  P_value Sig
+bbm_lag1     0.133951   0.029491 0.002303 0.998163    

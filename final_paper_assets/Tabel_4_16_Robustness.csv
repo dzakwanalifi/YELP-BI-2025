@@ -1,0 +1,6 @@
+Specification,rain_lag2,bbm_lag1,temperature,Pseudo_R2,Max_Deviation_pct
+Baseline (Combined),-0.526,0.134,24.5,0.984,0.0
+W_KNN3,-0.512,0.128,23.1,0.981,7.8
+W_KNN5,-0.534,0.137,25.2,0.986,4.2
+W_Distance,-0.501,0.139,26.8,0.979,9.4
+W_Combined_0.7,-0.519,0.132,24.1,0.983,2.8

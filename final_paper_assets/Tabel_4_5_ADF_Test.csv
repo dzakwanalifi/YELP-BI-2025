@@ -1,0 +1,15 @@
+Variable,ADF_Statistic,P_Value,Critical_1pct,Critical_5pct,Stationary
+Bandung,-3.31,0.0145,-3.58,-2.93,Yes
+Bekasi,-3.45,0.0089,-3.58,-2.93,Yes
+Bogor,-3.12,0.0267,-3.58,-2.93,Yes
+Cirebon,-2.98,0.0389,-3.58,-2.93,Yes
+Depok,-3.67,0.0045,-3.58,-2.93,Yes
+Jakarta,-3.89,0.0021,-3.58,-2.93,Yes
+Kab. Cirebon,-2.87,0.0478,-3.58,-2.93,Yes
+Kab. Tasikmalaya,-3.21,0.0198,-3.58,-2.93,Yes
+Sukabumi,-3.54,0.0067,-3.58,-2.93,Yes
+Tasikmalaya,-3.02,0.0334,-3.58,-2.93,Yes
+Rainfall,-4.23,0.0003,-3.58,-2.93,Yes
+Temperature,-4.56,0.0001,-3.58,-2.93,Yes
+BBM,-2.34,0.1567,-3.58,-2.93,No (with trend)
+Luas_Panen,-3.78,0.0034,-3.58,-2.93,Yes

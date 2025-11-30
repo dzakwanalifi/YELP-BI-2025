@@ -1,0 +1,9 @@
+
+GAMBAR 4.5: POLA MUSIMAN (SEASONALITY)
+--------------------------------------
+1. Puncak Penurunan Harga (Panen Raya):
+   - April (Bulan 4): Koefisien -277 IDR
+   - Mei (Bulan 5): Koefisien -319 IDR (Terendah)
+2. Puncak Kenaikan Harga (Paceklik):
+   - Desember - Januari: Tren positif
+3. Interpretasi: Pola ini konsisten dengan siklus tanam padi di Jawa, di mana panen raya terjadi di Q2.

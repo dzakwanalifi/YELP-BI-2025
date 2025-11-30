@@ -1,0 +1,115 @@
+================================================================================
+VALIDATION QUESTIONS Q12-Q20: SEASONALITY & SPATIAL EFFECTS
+================================================================================
+
+[Q12] Which months show significant seasonality?
+------------------------------------------------------------
+
+Month dummies ranked by significance:
+  Variable  Coefficient  P_value Sig
+   month_8  -179.402281 0.000006 ***
+ W_month_8    49.173283 0.000011 ***
+ W_month_2   -68.810921 0.000189 ***
+W_month_10   -97.514707 0.000256 ***
+ W_month_4    -6.441042 0.002777  **
+W_month_12    10.540186 0.025911   *
+  month_10  -277.626045 0.149809 NaN
+   month_4  -277.983820 0.163960 NaN
+   month_6  -222.671407 0.209825 NaN
+   month_2    94.461013 0.291242 NaN
+ W_month_7     8.964752 0.474927 NaN
+ W_month_6    11.146386 0.714486 NaN
+   month_3  -102.875582 0.770866 NaN
+   month_7  -211.874829 0.833804 NaN
+   month_5  -319.033326 0.869762 NaN
+  month_11  -214.730359 0.880915 NaN
+  month_12  -140.144151 0.965947 NaN
+ W_month_5    40.301580 0.997784 NaN
+W_month_11   -20.359110 0.999796 NaN
+ W_month_3   -83.181459 0.999849 NaN
+ W_month_9     3.875678 0.999991 NaN
+   month_9   -22.133143 0.999996 NaN
+
+[RESULT] 6 months are significant at alpha=0.05:
+  - month_8: -179.40 IDR (lower than baseline)
+  - W_month_2: -68.81 IDR (lower than baseline)
+  - W_month_4: -6.44 IDR (lower than baseline)
+  - W_month_8: 49.17 IDR (higher than baseline)
+  - W_month_10: -97.51 IDR (lower than baseline)
+  - W_month_12: 10.54 IDR (higher than baseline)
+
+[Q13] Economic interpretation of W_temperature_mean_c = +67.71
+------------------------------------------------------------
+Coefficient: 67.71
+Std Error: 50.93
+P-value: 2.33e-07
+Significance: ***
+
+Interpretation:
+When neighboring regions' temperature rises by 1 deg C (weighted average),
+local rice prices INCREASE by 67.71 IDR/kg.
+
+This is a POSITIVE spatial spillover effect, suggesting:
+1. Higher neighbor temperature -> Lower neighbor supply -> Higher neighbor prices
+2. Price transmission through spatial arbitrage (traders buy local, sell to hot neighbors)
+3. Substitution effect: Consumers in hot regions buy from cooler neighbors
+
+[Q14] Why is W_precipitation not significant but W_temperature is?
+------------------------------------------------------------
+W_precipitation: coef=0.1115, p=0.0852
+W_temperature:   coef=67.71, p=2.33e-07
+
+Possible reasons:
+1. Rainfall effects are LOCALIZED (absorbed by rain_lag1/2/3 direct effects)
+   -> Rainfall shocks don't transmit spatially as much as temperature
+2. Temperature has BROADER spatial correlation (heat waves affect large areas)
+   -> Temperature creates synchronized supply shocks -> stronger price spillovers
+3. TEMPORAL LAG STRUCTURE captures local rainfall impacts (30/60/90 days)
+   -> Little residual variation left for spatial spillover
+4. IRRIGATION systems buffer rainfall shocks locally (no spillover needed)
+   -> But temperature affects yield quality across regions simultaneously
+
+[Q15] Is there a spatial lag of price (W_price or rho)?
+------------------------------------------------------------
+[YES] Found W_price_lag1:
+    Variable  Coefficient  P_value Sig
+W_price_lag1    -0.216702 0.334071 NaN
+
+[YES] Spatial autoregressive parameter rho exists:
+  rho = 0.2603
+  Std Error = 0.3278
+  P-value = 0.9793
+  Significance: nan
+
+Interpretation:
+A 1 IDR/kg increase in neighboring prices -> 0.2603 IDR/kg increase locally
+[RESULT] Spatial price transmission is NOT SIGNIFICANT
+  -> Price spillovers work through W_X variables (temperature, BBM) instead
+
+[Q16] What is the value and interpretation of rho?
+------------------------------------------------------------
+rho = 0.2603 (p=0.9793)
+
+[NOT SIGNIFICANT] at alpha=0.05
+
+This suggests:
+1. Spatial price transmission is WEAK or ALREADY CAPTURED by W_X variables
+2. Price spillovers work through INDIRECT CHANNELS (temperature, BBM)
+3. Direct spatial arbitrage may be limited by:
+   - Transportation costs
+   - Market segmentation
+   - Local price controls
+
+[Q17-Q20] Direct, Indirect, and Total Effects Decomposition
+------------------------------------------------------------
+
+NOTE: spreg.GM_Lag does not automatically compute effects decomposition.
+We need to manually calculate using the formula:
+Traceback (most recent call last):
+  File "D:\Arsip Kompetisi\YELP BI 2025\answer_validation_q12_q20.py", line 123, in <module>
+    print("  Direct Effect = \u03b2 (from own variable)")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2544.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u03b2' in position 18: character maps to <undefined>

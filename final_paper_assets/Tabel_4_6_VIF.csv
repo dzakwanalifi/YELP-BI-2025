@@ -1,0 +1,8 @@
+Variable,VIF,Interpretation
+Intercept,5.7,Normal for intercept
+rain_mm,1.02,No multicollinearity
+connectivity_index,1.02,No multicollinearity
+temperature_mean,2.87,Acceptable
+bbm_price,3.45,Acceptable
+luas_panen,2.12,Acceptable
+interaction_term,2.34,Acceptable

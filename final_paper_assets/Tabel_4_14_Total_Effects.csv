@@ -1,0 +1,5 @@
+Variable,Total_Effect,Std_Error,CI_Lower,CI_Upper,P_Value,Total_Direct_Ratio
+rain_lag2,-0.668,0.229,-1.12,-0.22,0.004,1.22
+bbm_lag1,0.192,0.051,0.09,0.29,0.0002,1.35
+temperature_mean,97.7,26.8,45.2,150.2,0.0003,3.71
+luas_panen,-0.0245,0.0095,-0.0431,-0.0059,0.01,2.75

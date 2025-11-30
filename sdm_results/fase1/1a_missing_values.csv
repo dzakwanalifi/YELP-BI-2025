@@ -1,0 +1,10 @@
+Column,Missing_Count,Missing_Percentage
+date,0,0.0
+commodity_id,0,0.0
+commodity_name,0,0.0
+province_id,0,0.0
+province_name,0,0.0
+location_type,0,0.0
+location_name,0,0.0
+price,0,0.0
+retrieved_at,0,0.0

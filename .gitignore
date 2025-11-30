@@ -1,5 +1,5 @@
 # Markdown files
-*.md
+# *.md
 
 # Large CSV files (specific files only, allow CSV in output folders)
 # *.csv  # Commented to allow CSV in output folders
@@ -62,3 +62,14 @@ cleaned_pihps_data/*.csv
 bps-jakarta-data/*.csv
 satu-data-jakarta/*.xlsx
 pihps_data/*.csv
+
+# Personal files (CV, KTP, Photos)
+CV/
+KTP/
+Foto/
+*.pdf
+*CV*.docx
+*KTP*.jpg
+*KTP*.png
+*Foto*.jpg
+*Foto*.png

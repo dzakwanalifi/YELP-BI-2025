@@ -1,0 +1,5 @@
+Indicator,Yellow_Alert,Red_Alert,Frequency_pct,False_Positive_pct,Sensitivity_pct,Specificity_pct
+Rainfall Deficit,<150mm/60days,<100mm/60days,8,23,84,76
+Temperature Anomaly,>+1.0°C/30days,>+1.5°C/30days,6,31,78,82
+BBM Price Increase,>Rp 800 (8%),>Rp 1200 (12%),12,18,81,79
+Combined (2+ indicators),Score >0.5,Score >0.7,4,6,67,94

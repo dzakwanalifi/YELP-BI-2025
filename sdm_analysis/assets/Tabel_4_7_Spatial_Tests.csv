@@ -1,0 +1,5 @@
+Test,Statistic,DF,P_Value,Decision,Implication
+LM-Lag,18.42,1,0.0,Reject H0,Spatial lag present
+LM-Error,12.67,1,0.0004,Reject H0,Spatial error present
+Robust LM-Lag,8.91,1,0.0028,Reject H0,SDM preferred
+Robust LM-Error,3.16,1,0.0754,Fail to reject,Spatial lag dominates

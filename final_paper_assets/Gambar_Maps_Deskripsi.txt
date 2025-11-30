@@ -1,0 +1,19 @@
+
+INSIGHT PETA SPASIAL (GAMBAR 4.3, 4.11, 4.13)
+---------------------------------------------
+1. GAMBAR 4.13 (VULNERABILITY MAP):
+   - Top 3 Wilayah Paling Rentan:
+     1. Cirebon (Score: 0.85)
+     2. Depok (Score: 0.79)
+     3. Kab. Cirebon (Score: 0.78)
+   - Interpretasi: Wilayah ini memiliki kombinasi volatilitas harga tinggi dan suhu rata-rata yang panas.
+
+2. GAMBAR 4.3 (PRICE MAP):
+   - Top 3 Wilayah Harga Tertinggi:
+     1. Jakarta Pusat (Rp 13361)
+     2. DKI Jakarta (Rp 13361)
+     3. Bandung (Rp 12530)
+
+3. GAMBAR 4.11 (DROUGHT SHOCK MAP):
+   - Simulasi: Penurunan curah hujan -200mm diprediksi menaikkan harga sebesar Rp 100-300/kg.
+   - Dampak terbesar diprediksi terjadi di wilayah dengan vulnerabilitas tinggi (Cirebon).

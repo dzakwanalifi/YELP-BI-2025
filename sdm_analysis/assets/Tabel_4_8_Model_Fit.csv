@@ -1,0 +1,7 @@
+Metric,Value
+Pseudo R-squared,0.984
+Log-Likelihood,-4521.2
+AIC,9134.4
+BIC,9250.1
+RMSE,154.3
+MAPE (Out-of-Sample),1.25%

@@ -1,0 +1,10 @@
+Region,Direct_Effect_IDR,Spillover_Effect_IDR,Total_Effect_IDR,Days_to_Peak
+Bandung (Epicenter),49,86,135,15
+Cirebon,52,92,144,18
+Tasikmalaya,48,89,137,16
+Sukabumi,45,78,123,20
+Jakarta,0,135,135,25
+Bekasi,0,121,121,28
+Depok,0,118,118,27
+Bogor,0,98,98,30
+System Average,24,102,126,22

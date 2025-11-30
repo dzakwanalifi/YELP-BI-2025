@@ -1,0 +1,65 @@
+================================================================================
+FIXED SDM ANALYSIS - Panel + Facility Weights + Temporal Lags
+================================================================================
+
+[1/5] Loading and merging datasets...
+  PIHPS data: (373430, 9)
+  Rice commodities only: (106700, 9)
+  After weather merge: (106700, 11)
+  After BBM merge: (106700, 13)
+  After luas panen merge: (106700, 16)
+  Final cleaned: (91182, 17)
+
+[2/5] Constructing facility network weights...
+  Locations: 12
+  Combined weights: 12 units, 12.00 total weights
+
+[3/5] Creating panel data with temporal lags...
+  Panel: 12 locations x 61 months = 732 obs
+  After lags: 696 obs
+
+[4/5] Estimating Panel Spatial Durbin Model...
+  y: (696, 1), X: (696, 22)
+  Variables: 22 (11 + 11 month dummies)
+  Time periods: 58
+  Expanding W from 12x12 to 696x696
+  Panel W created: 696 units, 696.00 total weights
+
+  Estimating with GM_Lag...
+  [WARN] GM failed: The array contains non-numeric elements, which are not supported.
+  Trying ML_Lag...
+Traceback (most recent call last):
+  File "D:\Arsip Kompetisi\YELP BI 2025\run_fixed_sdm.py", line 265, in <module>
+    sdm = GM_Lag(
+        y, X, w=w_panel,
+    ...<5 lines>...
+        spat_impacts=['simple', 'full']
+    )
+  File "C:\Users\dzakw\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\spreg\twosls_sp.py", line 577, in __init__
+    x_constant, name_x, warn = USER.check_constant(x, name_x)
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\dzakw\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\spreg\user_output.py", line 890, in check_constant
+    check_numeric_bool(x)
+    ~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\dzakw\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\spreg\user_output.py", line 362, in check_numeric_bool
+    raise ValueError("The array contains non-numeric elements, which are not supported.")
+ValueError: The array contains non-numeric elements, which are not supported.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Arsip Kompetisi\YELP BI 2025\run_fixed_sdm.py", line 280, in <module>
+    sdm = ML_Lag(
+        y, X, w=w_panel,
+    ...<6 lines>...
+        spat_diag=True
+    )
+  File "C:\Users\dzakw\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\spreg\ml_lag.py", line 645, in __init__
+    x_constant, name_x, warn = USER.check_constant(x, name_x)
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\dzakw\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\spreg\user_output.py", line 890, in check_constant
+    check_numeric_bool(x)
+    ~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\dzakw\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\spreg\user_output.py", line 362, in check_numeric_bool
+    raise ValueError("The array contains non-numeric elements, which are not supported.")
+ValueError: The array contains non-numeric elements, which are not supported.

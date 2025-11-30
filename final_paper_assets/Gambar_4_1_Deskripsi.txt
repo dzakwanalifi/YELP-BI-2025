@@ -1,0 +1,15 @@
+
+GAMBAR 4.1: DINAMIKA HARGA BERAS (TIME SERIES)
+----------------------------------------------
+1. Tren Umum: Harga beras mengalami kenaikan sebesar 32.97% dari 2021 hingga 2025.
+2. Harga Rata-rata Tahunan:
+date
+2021    10405.338614
+2022    10702.582071
+2023    12225.411689
+2024    13847.035210
+2025    13835.524141
+3. Ekstrem:
+   - Harga Tertinggi dicatat di Kab. Tasikmalaya.
+   - Harga Terendah dicatat di Depok.
+4. Interpretasi: Terlihat adanya tren kenaikan jangka panjang dengan fluktuasi musiman yang konsisten setiap tahun.
